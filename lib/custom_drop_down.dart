@@ -57,10 +57,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
                                     !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
                               });
                             },
-                            onDeleted: () {
-                              widget.tagList.where((e) => e.selected == true).toList()[index].selected =
-                                  !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
-                            },
+                            onDeleted: () {},
                           ),
                         ),
                       )),
@@ -137,20 +134,22 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   ),
                 ),
                 Column(
-                    children: List.generate(
-                        widget.tagList.length,
-                        (index) => FlatButton(
-                              color: widget.tagList[index].selected ? Colors.grey[300] : null,
-                              onPressed: () {
-                                setState(() {
-                                  widget.tagList[index].selected = !widget.tagList[index].selected;
-                                });
-                              },
-                              child: Container(
-                                width: double.infinity,
-                                child: Text(widget.tagList[index].label),
-                              ),
-                            ))),
+                  children: List.generate(
+                    widget.tagList.length,
+                    (index) => FlatButton(
+                      color: widget.tagList[index].selected ? Colors.grey[300] : null,
+                      onPressed: () {
+                        setState(() {
+                          widget.tagList[index].selected = !widget.tagList[index].selected;
+                        });
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        child: Text(widget.tagList[index].label),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -170,4 +169,9 @@ class TagModel {
     this.label,
     this.selected = false,
   });
+
+  @override
+  String toString() {
+    return 'TagModel{label: $label, selected: $selected}';
+  }
 }

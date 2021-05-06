@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   final controller = Controller();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +22,12 @@ class HomePage extends StatelessWidget {
             CustomDropDown(
               tagList: controller.tagList,
             ),
+            RaisedButton(
+              onPressed: () {
+                print(controller.tagList.where((element) => element.selected == true));
+              },
+              child: Text("teste"),
+            )
           ],
         ),
       ),
