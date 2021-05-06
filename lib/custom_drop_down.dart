@@ -14,6 +14,8 @@ class _CustomDropDownState extends State<CustomDropDown> {
   ExpandableController controller;
   bool rotateIcon = false;
 
+  List<TagModel> get tagModelListSelected => widget.tagList.where((e) => e.selected == true).toList();
+
   @override
   void initState() {
     controller = ExpandableController(initialExpanded: false);
@@ -43,24 +45,39 @@ class _CustomDropDownState extends State<CustomDropDown> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Label',
+                    style: TextStyle(
+                      color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                    ),
+                  ),
                   Row(
                     children: [
                       Expanded(
-                        child: Wrap(
-                          children: List.generate(
-                            widget.tagList.where((e) => e.selected == true).length,
-                            (index) => InputChip(
-                              label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
-                              onPressed: () {
-                                setState(() {
-                                  widget.tagList.where((e) => e.selected == true).toList()[index].selected =
-                                      !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
-                                });
-                              },
-                              onDeleted: () {},
-                            ),
-                          ),
-                        ),
+                        child: tagModelListSelected.length == 0
+                            ? Container(
+                                margin: EdgeInsets.only(top: 15),
+                                child: Text(
+                                  'PlaceHolder',
+                                  style: TextStyle(
+                                    color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                                  ),
+                                ),
+                              )
+                            : Wrap(
+                                children: List.generate(
+                                  tagModelListSelected.length,
+                                  (index) => InputChip(
+                                    label: Text(tagModelListSelected[index].label),
+                                    onPressed: () {
+                                      setState(() {
+                                        tagModelListSelected[index].selected = !tagModelListSelected[index].selected;
+                                      });
+                                    },
+                                    onDeleted: () {},
+                                  ),
+                                ),
+                              ),
                       ),
                       Transform.rotate(
                         angle: 3.1451 * 1.5,
@@ -75,8 +92,14 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   ),
                   Divider(
                     thickness: 1,
-                    color: Color.fromRGBO(0, 106, 106, 1),
-                  )
+                    color: tagModelListSelected.length == 0 ? Colors.redAccent : Color.fromRGBO(0, 106, 106, 1),
+                  ),
+                  Text(
+                    'Selecione opção',
+                    style: TextStyle(
+                      color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -92,24 +115,39 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        'Label',
+                        style: TextStyle(
+                          color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                        ),
+                      ),
                       Row(
                         children: [
                           Expanded(
-                            child: Wrap(
-                              children: List.generate(
-                                widget.tagList.where((e) => e.selected == true).length,
-                                (index) => InputChip(
-                                  label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
-                                  onPressed: () {
-                                    setState(() {
-                                      widget.tagList.where((e) => e.selected == true).toList()[index].selected =
-                                          !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
-                                    });
-                                  },
-                                  onDeleted: () {},
-                                ),
-                              ),
-                            ),
+                            child: tagModelListSelected.length == 0
+                                ? Container(
+                                    margin: EdgeInsets.only(top: 15),
+                                    child: Text(
+                                      'PlaceHolder',
+                                      style: TextStyle(
+                                        color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                                      ),
+                                    ),
+                                  )
+                                : Wrap(
+                                    children: List.generate(
+                                      tagModelListSelected.length,
+                                      (index) => InputChip(
+                                        label: Text(tagModelListSelected[index].label),
+                                        onPressed: () {
+                                          setState(() {
+                                            tagModelListSelected[index].selected = !tagModelListSelected[index].selected;
+                                          });
+                                        },
+                                        onDeleted: () {},
+                                      ),
+                                    ),
+                                  ),
                           ),
                           Transform.rotate(
                             angle: 3.1451 * 1.5,
@@ -124,8 +162,14 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       ),
                       Divider(
                         thickness: 1,
-                        color: Color.fromRGBO(0, 106, 106, 1),
-                      )
+                        color: tagModelListSelected.length == 0 ? Colors.redAccent : Color.fromRGBO(0, 106, 106, 1),
+                      ),
+                      Text(
+                        'Selecione opção',
+                        style: TextStyle(
+                          color: tagModelListSelected.length == 0 ? Colors.redAccent : null,
+                        ),
+                      ),
                     ],
                   ),
                 ),
