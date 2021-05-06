@@ -46,33 +46,31 @@ class _CustomDropDownState extends State<CustomDropDown> {
                   Row(
                     children: [
                       Expanded(
-                          child: Wrap(
-                        children: List.generate(
-                          widget.tagList.where((e) => e.selected == true).length,
-                          (index) => InputChip(
-                            label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
-                            onPressed: () {
-                              setState(() {
-                                widget.tagList.where((e) => e.selected == true).toList()[index].selected =
-                                    !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
-                              });
-                            },
-                            onDeleted: () {},
+                        child: Wrap(
+                          children: List.generate(
+                            widget.tagList.where((e) => e.selected == true).length,
+                            (index) => InputChip(
+                              label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
+                              onPressed: () {
+                                setState(() {
+                                  widget.tagList.where((e) => e.selected == true).toList()[index].selected =
+                                      !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
+                                });
+                              },
+                              onDeleted: () {},
+                            ),
                           ),
                         ),
-                      )),
+                      ),
                       Transform.rotate(
-                        angle: rotateIcon ? 3.1451 * 1.5 : 3.1451 * 0.5,
+                        angle: 3.1451 * 1.5,
                         child: IconButton(
                           onPressed: () {
                             controller.toggle();
-                            setState(() {
-                              rotateIcon = controller.value;
-                            });
                           },
                           icon: Icon(Icons.arrow_back_ios_rounded),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Divider(
@@ -97,33 +95,31 @@ class _CustomDropDownState extends State<CustomDropDown> {
                       Row(
                         children: [
                           Expanded(
-                              child: Wrap(
-                            children: List.generate(
-                              widget.tagList.where((e) => e.selected == true).length,
-                              (index) => InputChip(
-                                label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
-                                onPressed: () {
-                                  setState(() {
-                                    widget.tagList.where((e) => e.selected == true).toList()[index].selected =
-                                        !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
-                                  });
-                                },
-                                onDeleted: () {},
+                            child: Wrap(
+                              children: List.generate(
+                                widget.tagList.where((e) => e.selected == true).length,
+                                (index) => InputChip(
+                                  label: Text(widget.tagList.where((e) => e.selected == true).toList()[index].label),
+                                  onPressed: () {
+                                    setState(() {
+                                      widget.tagList.where((e) => e.selected == true).toList()[index].selected =
+                                          !widget.tagList.where((e) => e.selected == true).toList()[index].selected;
+                                    });
+                                  },
+                                  onDeleted: () {},
+                                ),
                               ),
                             ),
-                          )),
+                          ),
                           Transform.rotate(
-                            angle: rotateIcon ? 3.1451 * 1.5 : 3.1451 * 0.5,
+                            angle: 3.1451 * 1.5,
                             child: IconButton(
                               onPressed: () {
                                 controller.toggle();
-                                setState(() {
-                                  rotateIcon = controller.value;
-                                });
                               },
                               icon: Icon(Icons.arrow_back_ios_rounded),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Divider(
