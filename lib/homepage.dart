@@ -1,10 +1,18 @@
-import 'package:dropdowncustom/controller.dart';
-import 'package:dropdowncustom/custom_drop_down.dart';
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'custom_drop_down.dart';
+
 class HomePage extends StatelessWidget {
-  final controller = Controller();
+  List<TagModel> labelOptions = [
+    TagModel(label: 'Field 1'),
+    TagModel(label: 'Field 2',selected: true),
+    TagModel(label: 'Field 3'),
+    TagModel(label: 'Field 4'),
+    TagModel(label: 'Field 5'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +25,20 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Selecting"),
-            SizedBox(height: 10),
             CustomDropDown(
-              tagList: controller.tagList,
+              tagList: labelOptions,
+              onDelete: (){
+                print("cliquei no delete");
+              },
+              onSelected: (){
+                print("cliquei para selecionar");
+              },
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
-                print(controller.tagList.where((element) => element.selected == true));
+                print(
+                  labelOptions.where((element) => element.selected == true),
+                );
               },
               child: Text("teste"),
             )
